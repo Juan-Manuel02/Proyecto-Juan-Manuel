@@ -1,0 +1,220 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121619; /* Azul petróleo oscuro */
+    color: #e1ded9;            /* Gris claro cálido */
+    font-family: 'Courier New', monospace; /* Tipografía con un toque técnico/creativo */
+    line-height: 1.9;
+    overflow-x: hidden; /* Evitar el scroll horizontal */
+    position: relative; /* Para el uso de pseudo-elementos */
+}
+
+.abstract-bg {
+    position: fixed; /* Fijo para que no se desplace con el scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Detrás de todo */
+    pointer-events: none; /* Ignorar eventos del mouse */
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 50%; /* Forma elíptica */
+    background-color: rgba(255, 255, 255, 0.03); /* Corregido: eliminado espacio después de rgba */
+    filter: blur(30px); /* Corregido: era blue(30px) */
+    opacity: 0.7; /* Añadido para mejor visibilidad */
+}
+
+.shape1 {
+    width: 300px;
+    height: 300px; 
+    top: 10%;
+    left: 5%;
+    background-color: rgba(185, 71, 43, 0.05); /* Tono rojizo del CTA */
+}
+
+.shape2 {
+    width: 400px;
+    height: 400px; 
+    bottom: 15%;
+    right: 10%;
+}
+
+.shape3 {
+    width: 250px;
+    height: 250px; 
+    top: 40%;
+    left: 50%;
+    background-color: rgba(185, 71, 43, 0.03); /* Tono rojizo del CTA */
+}
+
+/* HEADER - Navegación fija y simple */
+header {
+    background-color: transparent;
+    backdrop-filter: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: rgba(18, 22, 25, 0.8); /* Semi-transparente para efecto de vidrio */
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(5px); /* Efecto vidrio esmerilado */
+    z-index: 10; /* Asegurar que está por encima del fondo */
+}
+
+/* Logo en el header */
+.logo {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 100%;
+    width: auto;
+    filter: brightness(0) saturate(100%) invert(93%) sepia(8%) saturate(116%) hue-rotate(356deg) brightness(92%) contrast(87%);
+}
+
+/* LISTA DE NAVEGACIÓN - sin bullets y con espacio */
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+/* ENLACES de navegación */
+nav a {
+    color: #e1ded9;          /* Mismo tono que el texto principal */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* EFECTO HOVER en navegación */
+nav a:hover {
+    color: #b9472b;          /* Rojo terroso quemado */
+}
+
+/* HERO SECTION - ocupa pantalla completa, centra contenido */
+.hero {
+    height: calc(100vh - 80px); /* Altura completa menos el header */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Texto dentro del hero */
+.typing-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 60%; /* Reducido para que no ocupe toda la pantalla */
+    margin: 0 auto; /* centra el contenedor */
+    flex-wrap: wrap; /* permite que el texto se ajuste en varias líneas */
+}
+
+/* Aumentar el tamaño del texto */
+#typing {
+    font-size: 1.8rem; /* aumenta el tamaño del texto */
+    line-height: 1.4; /* mejora el espacio entre líneas */
+    text-align: center; /* centra el texto */
+}
+
+.cursor { /* cambios: ajustar cursor para que coincida con el nuevo tamaño */
+    font-size: 1.8rem; /* ahora tiene el mismo tamaño que el texto */
+    margin-left: 5px;
+    color: #b9472b;
+    animation: blink 1s infinite;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* BOTÓN de llamada a la acción */
+.cta a { /* no hay cambios a priori */
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #b9472b; /* Rojo terroso */
+    color: #e1ded9;            /* Texto en fondo oscuro, contraste inverso */
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem; /* Más espacio entre el texto y el botón */
+}
+
+/* HOVER en el botón */
+.cta a:hover {
+    background-color: #872d29; /* Vino profundo, elegante, más oscuro */
+}
+
+/* Modo oscuro (preparado para implementar la funcionalidad) */
+.modo-oscuro {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #e1ded9;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* Media queries para responsive */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        height: 35px;
+        margin-right: 1rem;
+    }
+
+    nav ul {
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 0.8rem;
+    }
+
+    .logo {
+        height: 30px;
+        flex: 0 0 auto;
+        margin-right: 1rem;
+    }
+
+    nav {
+        flex: 1 1 auto;
+    }
+
+    nav ul {
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+}
